@@ -89,11 +89,12 @@ resource "azurerm_public_ip" "catapp-pip" {
   domain_name_label   = "${var.prefix}-meow"
 }
 
-resource "azurerm_virtual_machine" "catapp" {
+resource "azurerm_virtual_machine" "catapp" "devops" {
   name                = "${var.prefix}-meow"
   location            = var.location
   resource_group_name = azurerm_resource_group.myresourcegroup.name
   vm_size             = var.vm_size
+
 
   network_interface_ids         = [azurerm_network_interface.catapp-nic.id]
   delete_os_disk_on_termination = "true"
